@@ -1,0 +1,165 @@
+<style>
+    .hotel-main {
+        width: 100%;
+        /* or any custom size */
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .hotel-ammenities {
+        width: 18px;
+        height: 18px;
+    }
+
+    .mycontent-left {
+        border-left: 1px dashed #333;
+    }
+</style>
+<md-toolbar>
+    <img class="pull-left" src="images/logo-almundo.svg" alt="">
+</md-toolbar>
+<div style="padding: 20px;" layout="row" ng-controller="HotelCtrl">
+
+    <div hide-sm flex="20">
+        <md-card style="padding: 10px;">
+            <strong>Filtros</strong>
+        </md-card>
+
+
+        <md-card style="padding: 10px;">
+            <div flex>
+                <strong>
+                    <i class="material-icons">search</i>Nombre del hotel</strong>
+            </div>
+            <div flex>
+                <input class="pull-left" size="10" placeholder="Ingrese el nombre del hotel" type="text" />
+                <button class="btn-primary pull-right">Aceptar</button>
+            </div>
+        </md-card>
+        <md-card style="padding: 10px;">
+            <div flex>
+                <strong>
+                    <i class="material-icons">star</i>Estrellas</strong>
+            </div>
+            <div flex>
+                <md-checkbox style="width: 100%">
+                    Todas las estrellas
+                </md-checkbox>
+                <md-checkbox style="width: 100%">
+                    <span style="color:yellow">
+                        <i class="material-icons">star</i>
+                        <i class="material-icons">star</i>
+                        <i class="material-icons">star</i>
+                        <i class="material-icons">star</i>
+                        <i class="material-icons">star</i>
+                    </span>
+
+                </md-checkbox>
+                <md-checkbox style="width: 100%">
+                    <span style="color:yellow">
+                        <i class="material-icons">star</i>
+                        <i class="material-icons">star</i>
+                        <i class="material-icons">star</i>
+                        <i class="material-icons">star</i>
+                    </span>
+                </md-checkbox>
+                <md-checkbox style="width: 100%">
+                    <span style="color:yellow">
+                        <i class="material-icons">star</i>
+                        <i class="material-icons">star</i>
+                        <i class="material-icons">star</i>
+                    </span>
+                </md-checkbox>
+                <md-checkbox style="width: 100%">
+                    <span style="color:yellow">
+                        <i class="material-icons">star</i>
+                        <i class="material-icons">star</i>
+
+                    </span>
+                </md-checkbox>
+                <md-checkbox style="width: 100%">
+                    <span style="color:yellow">
+                        <i class="material-icons">star</i>
+                    </span>
+                </md-checkbox>
+            </div>
+        </md-card>
+    </div>
+
+
+    <div flex="80">
+        <md-card style="padding: 20px" ng-repeat="h in hotels">
+            <div hide-gt-xs show-sm layout="column">
+                <div flex="30">
+                    <div style="padding-right: 20px;">
+                        <img class="hotel-main" src="images/hotels/{{h.image}}" alt="">
+                    </div>
+
+                </div>
+                <div flex="50">
+                    <div layout="column">
+                        <strong>{{h.name}}</strong>
+                        <span style="color:yellow">
+                            <i class="material-icons" ng-repeat="i in h.stars  track by $index">star</i>
+                        </span>
+                        <span>
+                            <span ng-repeat="a in h.amenities">
+                                <img class="hotel-ammenities" src="icons/amenities/{{a}}.svg" alt="">
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="mycontent-left" style="padding: 20px" flex="20">
+                    <div layout="column">
+                        Precio por noche por habitación
+                    </div>
+                    <div layout="column">
+                        <center>
+                            <h1>ARS {{h.price}}</h1>
+                        </center>
+                    </div>
+                    <div layout="column">
+                        <button ng-click="viewHotel(h.id)" class="btn-primary">Ver Hotel</button>
+                    </div>
+                </div>
+            </div>
+            <div hide-gt-xs  show-gt-sm  layout="row">
+                    <div flex="30">
+                        <div style="padding-right: 20px;">
+                            <img class="hotel-main" src="images/hotels/{{h.image}}" alt="">
+                        </div>
+    
+                    </div>
+                    <div flex="50">
+                        <div layout="column">
+                            <strong>{{h.name}}</strong>
+                            <span style="color:yellow">
+                                <i class="material-icons" ng-repeat="i in h.stars  track by $index">star</i>
+                            </span>
+                            <span>
+                                <span ng-repeat="a in h.amenities">
+                                    <img class="hotel-ammenities" src="icons/amenities/{{a}}.svg" alt="">
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mycontent-left" style="padding: 20px" flex="20">
+                        <div layout="column">
+                            Precio por noche por habitación
+                        </div>
+                        <div layout="column">
+                            <center>
+                                <h1>ARS {{h.price}}</h1>
+                            </center>
+                        </div>
+                        <div layout="column">
+                            <button ng-click="viewHotel(h.id)" class="btn-primary">Ver Hotel</button>
+                        </div>
+                    </div>
+                </div>
+        </md-card>
+    </div>
+
+
+
+</div>
